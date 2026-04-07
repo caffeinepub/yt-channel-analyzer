@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Dark theme - YouTube Analytics */
+    --radius: 0.75rem;
+
+    /* Page background: deep bluish-charcoal #0B1220 */
+    --background: 13% 0.025 240;
+    /* Card: slightly lighter #101B2B */
+    --card: 16.5% 0.03 238;
+    --card-foreground: 92% 0.01 240;
+    /* Popover */
+    --popover: 18% 0.03 238;
+    --popover-foreground: 92% 0.01 240;
+    /* Primary: YouTube red #E11D2E */
+    --primary: 48% 0.22 25;
+    --primary-foreground: 98% 0 0;
+    /* Secondary: dark surface */
+    --secondary: 20% 0.025 238;
+    --secondary-foreground: 92% 0.01 240;
+    /* Muted */
+    --muted: 19% 0.025 238;
+    --muted-foreground: 55% 0.015 240;
+    /* Accent: subtle highlight */
+    --accent: 22% 0.03 238;
+    --accent-foreground: 92% 0.01 240;
+    /* Destructive */
+    --destructive: 48% 0.22 25;
+    --destructive-foreground: 98% 0 0;
+    /* Borders: rgba(255,255,255,0.06) */
+    --border: 1 0 0 / 6%;
+    --input: 1 0 0 / 10%;
+    --ring: 48% 0.22 25;
+    /* Charts */
+    --chart-1: 68% 0.18 220; /* cyan #22B7FF */
+    --chart-2: 57% 0.2 25; /* red #EF4444 */
+    --chart-3: 62% 0.18 145; /* green #22C55E */
+    --chart-4: 62% 0.18 270; /* indigo */
+    --chart-5: 70% 0.15 55; /* amber */
+    /* Sidebar */
+    --sidebar: 14% 0.025 240;
+    --sidebar-foreground: 92% 0.01 240;
+    --sidebar-primary: 48% 0.22 25;
+    --sidebar-primary-foreground: 98% 0 0;
+    --sidebar-accent: 22% 0.03 238;
+    --sidebar-accent-foreground: 92% 0.01 240;
+    --sidebar-border: 1 0 0 / 8%;
+    --sidebar-ring: 48% 0.22 25;
+
+    /* Custom semantic tokens */
+    --yt-red: #e11d2e;
+    --yt-green: #22c55e;
+    --yt-cyan: #22b7ff;
+    --yt-red-chart: #ef4444;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --card-bg: #101b2b;
+    --page-bg: #0b1220;
+    --sidebar-bg: #0c1422;
+    --topbar-bg: #0e1826;
+    --card-border: rgba(255, 255, 255, 0.06);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+    background: linear-gradient(135deg, #0b1220 0%, #0a0f1a 100%);
+    min-height: 100vh;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b1220;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@layer utilities {
+  .card-yt {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+  }
+
+  .text-yt-primary {
+    color: var(--text-primary);
+  }
+
+  .text-yt-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-yt-muted {
+    color: var(--text-muted);
+  }
+
+  .bg-yt-card {
+    background-color: var(--card-bg);
+  }
+
+  .bg-yt-sidebar {
+    background-color: var(--sidebar-bg);
+  }
+
+  .bg-yt-topbar {
+    background-color: var(--topbar-bg);
+  }
+
+  .border-yt-card {
+    border-color: var(--card-border);
+  }
+
+  .yt-red {
+    color: var(--yt-red);
+  }
+
+  .bg-yt-red {
+    background-color: var(--yt-red);
+  }
+
+  .yt-green {
+    color: var(--yt-green);
+  }
+
+  .yt-cyan {
+    color: var(--yt-cyan);
+  }
+
+  .spin-slow {
+    animation: spin 1.2s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .step-appear {
+    animation: fadeSlideIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .best-video-glow {
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5), 0 0 12px
+      rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.4) !important;
+  }
+
+  .worst-video-border {
+    border-color: rgba(239, 68, 68, 0.35) !important;
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
+  }
+}
